@@ -1,12 +1,15 @@
-import React from 'react';
+import {FC} from 'react';
 import './App.css';
+import { Message } from './components/Message';
 
-function App() {
-  return (
-    <div className="App">
-      hello
-    </div>
-  );
+const App: FC = () => {
+
+    const message = 'Привет мир'
+        return (
+        <>
+            <Message message = {message}/>
+        </>
+    );
 }
 
 export default App;
