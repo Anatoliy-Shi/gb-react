@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gb-react/static/css/main.a5c3c15d.css",
+    "main.js": "/gb-react/static/js/main.31dea0a5.js",
+    "index.html": "/gb-react/index.html",
+    "main.a5c3c15d.css.map": "/gb-react/static/css/main.a5c3c15d.css.map",
+    "main.31dea0a5.js.map": "/gb-react/static/js/main.31dea0a5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a5c3c15d.css",
+    "static/js/main.31dea0a5.js"
+  ]
+}
