@@ -1,0 +1,13 @@
+.listItems {
+  overflow: auto;
+  width: 400px;
+}
+
+.listItem {
+  font-size: 20px;
+  color: #3c11c3;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 5px;
+  overflow-y: auto;
+}

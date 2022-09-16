@@ -1,14 +1,10 @@
 import {FC} from 'react';
 import './App.css';
-import { Message } from './components/Message';
+import {Chat} from "./components/chat/Chat";
 
 const App: FC = () => {
-
-    const message = 'Привет мир'
         return (
-        <>
-            <Message message = {message}/>
-        </>
+            <Chat/>
     );
 }
 

@@ -1,0 +1,15 @@
+.button{
+  margin-left: 15px;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  color: #ebebeb;
+  background-color: #3e2689;
+  border: none;
+  font-size: 18px;
+
+  &:disabled {
+    color: #101a93;
+    background-color: #b4c1a8;
+  }
+}
