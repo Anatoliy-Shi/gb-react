@@ -1,0 +1,14 @@
+.chat{
+  display: flex;
+  flex-direction: column-reverse;
+  height: 500px;
+  width: 500px;
+  border: 1px solid rebeccapurple;
+  border-radius: 20px;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.send {
+  margin: 10px auto;
+  display: flex;
+}
