@@ -1,4 +1,4 @@
-import React, {FormEvent} from "react";
+import React, {FormEvent, useEffect, useRef} from "react";
 import s from "./form.module.scss"
 import Button from '@mui/material/Button';
 import Input from "@mui/material/Input";
@@ -9,7 +9,8 @@ interface FormProps {
     setValue: Function
 }
 
-export const Form = ({value, addMessage, setValue}: FormProps) => {
+export const Form= ({value, addMessage, setValue}: FormProps) => {
+
     const sendMessage = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         addMessage()
@@ -19,6 +20,7 @@ export const Form = ({value, addMessage, setValue}: FormProps) => {
         <form className={s.form}
               onSubmit={(e) => sendMessage(e)}>
             <Input
+                autoFocus={true}
                 color="primary"
                 id="component-helper"
                 className={s.input}
@@ -41,7 +43,7 @@ export const Form = ({value, addMessage, setValue}: FormProps) => {
                     </svg>
                 </div>
             }
-            <Button sx={{'border-radius': '20px'}} variant="contained"
+            <Button sx={{'borderRadius': '20px'}} variant="contained"
                     color="primary"
                     type={'submit'}
                     disabled={!value}

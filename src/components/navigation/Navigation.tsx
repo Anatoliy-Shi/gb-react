@@ -6,10 +6,12 @@ import CommentIcon from '@mui/icons-material/Comment';
 import IconButton from '@mui/material/IconButton';
 
 export default function GutterlessList() {
+
+
     return (
         <List sx={{ width: '100%', border: '1px solid #534bae',
-            'border-right': 'none',
-            'border-radius': '20px 0 0 20px',
+            'borderRight': 'none',
+            'borderRadius': '20px 0 0 20px',
             'padding': '0 15px'
         }}>
             {[1, 2, 3].map((value) => (
