@@ -8,10 +8,17 @@ interface MessageProps {
 }
 
 export const Message = ({message}: MessageProps) => {
-        return (
-            <ul className={s.listItems}>
-                {message.map((el:IMessage) => <li className={s.listItem} key={nanoid()}>{el.author} {el.text}</li>)}
-            </ul>
-        );
 
+    return (
+        <div className={s.listItems}>
+            {message.map((el: IMessage) => (
+                <p
+                    className={s.listItem}
+                    key={nanoid()}>
+                    {el.author} {el.text}
+                </p>
+                ))
+            }
+        </div>
+    );
 }

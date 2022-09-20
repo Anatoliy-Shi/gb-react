@@ -1,20 +1,33 @@
-import React from 'react';
-import s from "./input.module.scss"
+import React, {FormEvent} from "react";
+import s from "./form.module.scss"
+import Button from '@mui/material/Button';
+import Input from "@mui/material/Input";
 
-interface InputProps {
+interface FormProps {
     value: string;
+    addMessage: Function;
     setValue: Function
 }
 
-export const Input = ({value, setValue}: InputProps) => {
-    return (
-        <div className={s.main}>
-            <input
+export const Form = ({value, addMessage, setValue}: FormProps) => {
+    const sendMessage = (e:FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        addMessage()
+    }
+
+    return(
+        <form className={s.form}
+              onSubmit={(e) => sendMessage(e)}>
+            <Input
+                color="primary"
+                id="component-helper"
                 className={s.input}
                 placeholder={'введите текст'}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                type="text"/>
+                type="text"
+                aria-describedby="component-helper-text"
+            />
             {value &&
                 <div onClick={() => setValue('')} className={s.clear}>
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -28,7 +41,12 @@ export const Input = ({value, setValue}: InputProps) => {
                     </svg>
                 </div>
             }
-        </div>
-    );
-};
+            <Button sx={{'border-radius': '20px'}} variant="contained"
+                    color="primary"
+                    type={'submit'}
+                    disabled={!value}
+                    onClick={() => addMessage()}>отправить</Button>
+        </form>
+    )
+}
 
