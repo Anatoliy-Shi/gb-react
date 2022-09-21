@@ -36,7 +36,7 @@ export const Form = ({value, addMessage, setValue, inputRef}: FormProps) => {
                 onChange={(e) => setValue(e.target.value)}
             />
             {value &&
-                <div onClick={clearInput} className={s.clear}>
+                <div onClick={()=> clearInput()} className={s.clear}>
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                          viewBox="0 0 252 252">
                         <g>
