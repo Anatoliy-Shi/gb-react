@@ -1,15 +1,16 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import {Message} from "./message/Message";
 import {IMessage} from "../../types/types";
 import s from "./chat.module.scss"
 import { Form } from './form/Form';
 
-
 export const Chat: FC = () => {
     const [value, setValue] = useState('')
     const [message, setMessage] = useState<IMessage[]>([])
+    const inputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
+        console.log(inputRef.current)
         if (message.at(-1)?.author === 'User: ') {
             const timeout = setTimeout(() => {
                 setMessage([...message,
@@ -21,20 +22,21 @@ export const Chat: FC = () => {
         }
     }, [message])
 
+
+
     const addMessage = () => {
         if (value.length > 0) {
             setMessage([...message,
                 {author: 'User: ', text: value}])
             setValue('')
+            inputRef.current?.focus()
         }
     }
-
-
 
     return (
         <div className={s.chat}>
             <div className={s.send}>
-                <Form value={value} setValue={setValue} addMessage={addMessage}/>
+                <Form value={value} inputRef={inputRef} setValue={setValue} addMessage={addMessage}/>
             </div>
             <Message message={message}/>
         </div>

@@ -1,34 +1,35 @@
-import React, {FormEvent, useEffect, useRef} from "react";
+import React, {FormEvent, RefObject} from "react";
 import s from "./form.module.scss"
 import Button from '@mui/material/Button';
-import Input from "@mui/material/Input";
+import {Input} from "@mui/material";
 
 interface FormProps {
-    value: string;
-    addMessage: Function;
+    value: string
+    addMessage: Function
     setValue: Function
+    inputRef: RefObject<HTMLInputElement>
 }
 
-export const Form= ({value, addMessage, setValue}: FormProps) => {
+export const Form = ({value, addMessage, setValue, inputRef}: FormProps) => {
 
-    const sendMessage = (e:FormEvent<HTMLFormElement>) => {
+
+    const sendMessage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         addMessage()
     }
 
-    return(
+    return (
         <form className={s.form}
               onSubmit={(e) => sendMessage(e)}>
             <Input
+                type="text"
+                inputRef={inputRef}
                 autoFocus={true}
-                color="primary"
-                id="component-helper"
-                className={s.input}
+                sx={{'color' : '#002f6c', 'width': '300px', 'height': '35px', 'fontWeight': '600',
+                    'fontSize': '18px', ' paddingLeft': '10px', 'outline': 'none'}}
                 placeholder={'введите текст'}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                type="text"
-                aria-describedby="component-helper-text"
             />
             {value &&
                 <div onClick={() => setValue('')} className={s.clear}>
