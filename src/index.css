@@ -11,3 +11,7 @@
   background-color: #c1cdbb;
   align-items: center;
 }
+span {
+  margin: 0;
+  padding-bottom: 5px;
+}
