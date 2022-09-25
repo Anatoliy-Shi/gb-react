@@ -3,6 +3,7 @@ import './../../App.css';
 import {NavLink} from "react-router-dom";
 import { styleNavLink } from '../../lib/activeNavigate';
 import s from "./navigate.module.scss"
+import {CustomLink} from "../CustomLink";
 
 
 export const Navigate = () => {
@@ -10,11 +11,10 @@ export const Navigate = () => {
     return (
             <ul className={s.lists}>
                 <li>
-                    <NavLink
-                        to="/gb-react/main"
-                        style={styleNavLink}>
+                    <CustomLink
+                        to="/gb-react">
                         Главная
-                    </NavLink>
+                    </CustomLink>
                 </li>
                 <li>
                     <NavLink to={'gb-react/chats'}

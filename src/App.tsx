@@ -14,7 +14,7 @@ const App: FC = () => {
                 <Navigate/>
             <div className={'content'}>
                 <Routes>
-                    <Route path='/gb-react/main' element={<Main/>}/>
+                    <Route path='/gb-react' element={<Main/>}/>
                     <Route path='/gb-react/chats' element={<Chat/>}/>
                     <Route path='/gb-react/profile' element={<Profile/>}/>
                     <Route path='/gb-react/*' element={<NotFound/>}/>
