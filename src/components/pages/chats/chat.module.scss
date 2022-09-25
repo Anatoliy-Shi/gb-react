@@ -3,12 +3,12 @@
   flex-direction: column-reverse;
   height: 500px;
   width: 500px;
-  border: 1px solid rebeccapurple;
-  border-radius: 20px;
+  border: 1px solid #534bae;
+  border-radius: 0 20px 20px 0;
   justify-content: space-between;
   padding-top: 20px;
 }
 .send {
-  margin: 10px auto;
-  display: flex;
+  margin: 10px;
 }
+

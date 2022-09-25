@@ -5,9 +5,17 @@
 
 .listItem {
   font-size: 20px;
-  color: #3c11c3;
   display: flex;
   flex-wrap: wrap;
   padding-top: 5px;
-  overflow-y: auto;
+  align-content: flex-start;
+  flex-direction: column;
+}
+
+.author {
+  color: #3c11c3;
+}
+
+.text {
+  color: #000051;
 }

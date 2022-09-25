@@ -1,0 +1,16 @@
+.clear {
+  position: absolute;
+  right: 140px;
+  top: 10px;
+  width: 16px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.form {
+  display: flex;
+  gap: 25px;
+  position: relative;
+  margin-top: 20px;
+}
