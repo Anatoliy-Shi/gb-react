@@ -12,5 +12,8 @@ export const theme = createTheme({
             light: '#4f83cc',
             dark: '#002f6c'
         },
+        warning: {
+            main: '#c71616'
+        }
     },
 });

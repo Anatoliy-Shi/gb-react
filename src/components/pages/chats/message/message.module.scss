@@ -1,0 +1,21 @@
+.listItems {
+  overflow: auto;
+  width: 400px;
+}
+
+.listItem {
+  font-size: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 5px;
+  align-content: flex-start;
+  flex-direction: column;
+}
+
+.author {
+  color: #3c11c3;
+}
+
+.text {
+  color: #000051;
+}

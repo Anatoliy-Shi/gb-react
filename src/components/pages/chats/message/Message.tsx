@@ -1,6 +1,6 @@
 import React from 'react';
 import {nanoid} from "nanoid";
-import {IMessage} from "../../../types/types";
+import {IMessage} from "../../../../types/types";
 import s from "./message.module.scss"
 
 interface MessageProps {

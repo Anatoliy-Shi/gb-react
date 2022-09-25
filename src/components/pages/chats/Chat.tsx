@@ -1,8 +1,9 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
 import {Message} from "./message/Message";
-import {IMessage} from "../../types/types";
+import {IMessage} from "../../../types/types";
 import s from "./chat.module.scss"
 import {Form} from './form/Form';
+import {Rooms} from "./rooms/Rooms";
 
 export const Chat: FC = () => {
     const [value, setValue] = useState('')
@@ -11,18 +12,16 @@ export const Chat: FC = () => {
     const messageListRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        // @ts-ignore
-        if (messageListRef.current?.clientHeight > 370) {
-            console.log('f')
-            messageListRef.current?.scrollBy(0, 1000)
+        if (messageListRef.current?.clientHeight) {
+            messageListRef.current?.scrollBy(0, 100)
         }
-    },[message])
+    }, [message])
 
     useEffect(() => {
         if (message.at(-1)?.author === 'User: ') {
             const timeout = setTimeout(() => {
                 setMessage([...message,
-                    {author: 'Бот: ', text: 'я есть Грут'}])
+                    {author: 'Бот: ', text: 'я Есть Грут'}])
             }, 1500)
             return () => {
                 clearTimeout(timeout)
@@ -41,11 +40,14 @@ export const Chat: FC = () => {
     }
 
     return (
-        <div className={s.chat}>
-            <div className={s.send}>
-                <Form value={value} inputRef={inputRef} setValue={setValue} addMessage={addMessage}/>
+        <>
+            <Rooms/>
+            <div className={s.chat}>
+                <div className={s.send}>
+                    <Form value={value} inputRef={inputRef} setValue={setValue} addMessage={addMessage}/>
+                </div>
+                <Message messageListRef={messageListRef} message={message}/>
             </div>
-            <Message messageListRef={messageListRef} message={message}/>
-        </div>
+        </>
     );
 }
