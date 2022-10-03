@@ -1,10 +1,12 @@
 export interface IMessage  {
     author: string,
-    text: string
+    text: string,
+    idRoom: string,
 }
 
 export interface IRooms  {
-    id?: string,
+    idRoom: string,
     name: string
+    message: string[]
 }
 

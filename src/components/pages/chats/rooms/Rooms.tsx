@@ -3,23 +3,28 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
-import {useState} from "react";
 import {Add} from '@mui/icons-material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {nanoid} from "nanoid";
 import {IRooms} from "../../../../types/types";
+import {Link, useParams} from "react-router-dom";
 
-export const Rooms = () => {
-    const [rooms, setRooms] = useState<IRooms[]>([])
+type roomProps = {
+    rooms: IRooms[]
+    setRooms: Function
+}
+
+
+export const Rooms = ({rooms, setRooms}: roomProps) => {
 
     const deleteChat = (room: IRooms) => {
-        const filterRooms = rooms.filter(el => el.id !== room.id)
+        const filterRooms = rooms.filter(el => el.idRoom !== room.idRoom)
         setRooms(filterRooms)
     }
 
     const addChat = () => {
         setRooms([...rooms, {
-            name: 'комната', id: nanoid()
+            name: 'комната', idRoom: nanoid()
         }])
     }
 
@@ -36,6 +41,7 @@ export const Rooms = () => {
                 </IconButton>
                 <hr/>
                 {rooms.map((room) => (
+
                     <ListItem
                         key={nanoid()}
                         disableGutters
@@ -45,7 +51,9 @@ export const Rooms = () => {
                             </IconButton>
                         }
                     >
-                        <ListItemText sx={{color: '#1a237e'}} primary={`${room.name} № ${room.id}`}/>
+                        <Link to={`${room.idRoom}`}>
+                            <ListItemText sx={{color: '#1a237e'}} primary={`${room.name} № ${room.idRoom}`}/>
+                        </Link>
                     </ListItem>
                 ))}
             </List>
