@@ -1,19 +1,35 @@
-import React, {FC, useEffect, useRef, useState} from 'react';
-import {Message} from "./message/Message";
-import {IMessage} from "../../../types/types";
+import React, {useEffect, useRef, useState} from 'react';
+import {IRooms} from "../../../types/types";
 import s from "./chat.module.scss"
 import {Form} from './form/Form';
 import {Rooms} from "./rooms/Rooms";
+import {Outlet, useParams} from "react-router-dom";
 
-export const Chat: FC = () => {
+type chatProps = {
+    messageListRef: any,
+    message: any,
+    setMessage: any
+}
+
+export const Chat = ({messageListRef, message, setMessage}:chatProps) => {
     const [value, setValue] = useState('')
-    const [message, setMessage] = useState<IMessage[]>([])
     const inputRef = useRef<HTMLInputElement>(null)
-    const messageListRef = useRef<HTMLDivElement>(null)
+    const [rooms, setRooms] = useState<IRooms[]>([
+        {
+            idRoom: '1',
+            name: 'Алерт',
+            message: ['Привет ', 'меня зовут Алерт ', 'я люблю оповещать']
+        },
+        {
+            idRoom: '2',
+            name: 'Принтер',
+            message: ['Привет ', 'меня зовут Принтер ', 'нужно что то распечатать, пиши']
+        },
+    ])
 
     useEffect(() => {
         if (messageListRef.current?.clientHeight) {
-            messageListRef.current?.scrollBy(0, 100)
+            messageListRef.current?.scrollBy(0, 1000)
         }
     }, [message])
 
@@ -39,14 +55,20 @@ export const Chat: FC = () => {
         }
     }
 
+
     return (
         <>
-            <Rooms/>
+            <Rooms rooms={rooms} setRooms={setRooms}/>
             <div className={s.chat}>
-                <div className={s.send}>
-                    <Form value={value} inputRef={inputRef} setValue={setValue} addMessage={addMessage}/>
-                </div>
-                <Message messageListRef={messageListRef} message={message}/>
+                {rooms.length === 0 && <div className={s.addRoom}>Добавьте комнату / чат</div>}
+                {rooms.length !== 0 &&
+                    <>
+                        <div className={s.send}>
+                            <Form value={value} inputRef={inputRef} setValue={setValue} addMessage={addMessage}/>
+                        </div>
+                        <Outlet/>
+                    </>
+                }
             </div>
         </>
     );

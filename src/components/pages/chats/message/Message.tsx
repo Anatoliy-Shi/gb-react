@@ -3,12 +3,14 @@ import {nanoid} from "nanoid";
 import {IMessage} from "../../../../types/types";
 import s from "./message.module.scss"
 
+
 interface MessageProps {
     message: IMessage[]
-    messageListRef: any
+    messageListRef: React.LegacyRef<HTMLDivElement>
 }
 
 export const Message = ({message, messageListRef}: MessageProps) => {
+
 
     return (
         <div ref={messageListRef} className={s.listItems}>
